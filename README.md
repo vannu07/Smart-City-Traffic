@@ -91,7 +91,7 @@
 
 ```bash
 # 📁 Navigate to your project directory
-cd "d:\PROJECTS\Smart city"
+cd /path/to/your/smart-city-project
 
 # 🔍 Verify Python installation
 python --version
