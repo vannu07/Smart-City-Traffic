@@ -326,7 +326,6 @@ python main.py
 ## 🤖 Machine Learning Models
 
 <div align="center">
-  <img src="https://media.giphy.com/media/3oKIPnAiaMCws8nOsE/giphy.gif" width="80" />
   <h3>🧠 AI-Powered Traffic Intelligence</h3>
 </div>
 
@@ -392,7 +391,7 @@ Real-time Conditions
 ## 🎨 Frontend Excellence
 
 <div align="center">
-  <img src="https://media.giphy.com/media/26tn33aiTi1jkl6H6/giphy.gif" width="80" />
+  
   <h3>✨ Modern Interactive Dashboard</h3>
 </div>
 
@@ -457,7 +456,7 @@ Real-time Conditions
 ## ⚙️ Configuration & Customization
 
 <div align="center">
-  <img src="https://media.giphy.com/media/3o6Zt0hNCfak3QCqsw/giphy.gif" width="60" />
+  
 </div>
 
 <details>
@@ -519,7 +518,7 @@ const UI_CONFIG = {
 ## 🚨 Troubleshooting Guide
 
 <div align="center">
-  <img src="https://media.giphy.com/media/5GoVLqeAOo6PK/giphy.gif" width="60" />
+  
   <h3>🛠️ Common Issues & Solutions</h3>
 </div>
 
@@ -599,7 +598,7 @@ CORS(app, resources={r"/api/*": {"origins": "*"}})
 ## 🔮 Future Roadmap
 
 <div align="center">
-  <img src="https://media.giphy.com/media/3oKIPf3C7HqqzXeUoE/giphy.gif" width="80" />
+  
   <h3>🚀 Upcoming Enhancements</h3>
 </div>
 
@@ -639,10 +638,6 @@ CORS(app, resources={r"/api/*": {"origins": "*"}})
 ## 👨‍💻 Developer Information
 
 <div align="center">
-  <img src="https://media.giphy.com/media/L1R1tvI9svkIWwpVYr/giphy.gif" width="100" />
-  
-  <h2>🎨 Created by Varnit Kumar</h2>
-  
   <table>
   <tr>
     <td align="center">
@@ -671,9 +666,6 @@ CORS(app, resources={r"/api/*": {"origins": "*"}})
 
 ## 🤝 Contributing
 
-<div align="center">
-  <img src="https://media.giphy.com/media/du3J3cXyzhj75IOgvA/giphy.gif" width="60" />
-</div>
 
 We welcome contributions! Here's how you can help improve the Smart City Traffic Management System:
 
@@ -716,7 +708,7 @@ We welcome contributions! Here's how you can help improve the Smart City Traffic
 ---
 
 <div align="center">
-  <img src="https://media.giphy.com/media/3oKIPnAiaMCws8nOsE/giphy.gif" width="60" />
+  
   
   <h2>🏙️ Built with ❤️ for Smart Cities by Varnit Kumar</h2>
   
