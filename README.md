@@ -642,7 +642,7 @@ CORS(app, resources={r"/api/*": {"origins": "*"}})
   <tr>
     <td align="center">
       <h3>🌟 Varnit Kumar</h3>
-      <p><em>Full-Stack Developer & ML Engineer</em></p>
+      <p><em>Data Science Enthusiast</em></p>
       <p><strong>Creator of Smart City Traffic Management System</strong></p>
       <p>
         <img src="https://img.shields.io/badge/Python-Expert-blue?style=flat&logo=python&logoColor=white" />
