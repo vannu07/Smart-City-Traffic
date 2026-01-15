@@ -23,7 +23,7 @@ jobs:
           PROMPT=$(cat << 'EOF'
           Summarize the following GitHub issue in one paragraph:
           Title: ${{ github.event.issue.title }}
-          Body: ${{ github.event.issue.body }}
+          Body: ${{ github.event.issue.body || 'No issue body was provided.' }}
           EOF
           )
 
@@ -55,3 +55,4 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           ISSUE_NUMBER: ${{ github.event.issue.number }}
+          RESPONSE: ${{ steps.inference.outputs.response }}
