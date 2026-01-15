@@ -21,7 +21,9 @@ jobs:
     - uses: actions/stale@v5
       with:
         repo-token: ${{ secrets.GITHUB_TOKEN }}
-        stale-issue-message: 'Stale issue message'
-        stale-pr-message: 'Stale pull request message'
+        stale-issue-message: >
+          This issue has been automatically marked as stale because there has been no recent activity on it in the Smart City Traffic Management System project. If this issue is still relevant, please add a comment or update it with any new details to keep it open; otherwise it may be closed automatically after a further period of inactivity.
+        stale-pr-message: >
+          This pull request has been automatically marked as stale due to a lack of recent activity in the Smart City Traffic Management System project. If you intend to continue working on this change, please push new commits or leave a comment to keep it active; otherwise it may be closed automatically after a further period of inactivity.
         stale-issue-label: 'no-issue-activity'
         stale-pr-label: 'no-pr-activity'
