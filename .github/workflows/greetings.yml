@@ -1,0 +1,44 @@
+name: Greetings
+
+on: [pull_request, issues]
+
+jobs:
+  greeting:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      pull-requests: write
+    steps:
+    - uses: actions/first-interaction@v1
+      with:
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
+        issue-message: |
+          👋 Welcome to the Smart City Traffic Management System project, and thank you for opening your first issue!
+          
+          This project focuses on improving urban mobility and traffic safety through data-driven insights and intelligent control of city traffic flows.
+          
+          To help us respond effectively, please make sure your issue includes:
+          - A clear description of the problem or suggestion
+          - Steps to reproduce (if reporting a bug)
+          - Relevant logs, screenshots, or configuration details (if applicable)
+          
+          Useful resources:
+          - Contribution guidelines: https://github.com/${{ github.repository }}/blob/main/CONTRIBUTING.md
+          - Code of conduct: https://github.com/${{ github.repository }}/blob/main/CODE_OF_CONDUCT.md
+          - Project documentation: https://github.com/${{ github.repository }}/tree/main/docs
+          
+          We appreciate your contribution to making our smart city traffic management smarter and safer!
+        pr-message: |
+          🎉 Thank you for submitting your first pull request to the Smart City Traffic Management System!
+          
+          A maintainer will review your changes as soon as possible. In the meantime, please ensure that:
+          - Your PR description clearly explains the motivation and the changes made
+          - Relevant tests have been added or updated
+          - All checks (linting, tests, build) are passing
+          
+          Helpful resources:
+          - Contribution guidelines: https://github.com/${{ github.repository }}/blob/main/CONTRIBUTING.md
+          - Code of conduct: https://github.com/${{ github.repository }}/blob/main/CODE_OF_CONDUCT.md
+          - Project documentation: https://github.com/${{ github.repository }}/tree/main/docs
+          
+          We’re glad to have you contributing to the Smart City Traffic Management System and look forward to your continued involvement!
