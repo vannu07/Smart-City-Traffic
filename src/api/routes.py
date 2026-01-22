@@ -63,9 +63,10 @@ def get_traffic_data():
         })
         
     except Exception as e:
+        current_app.logger.exception("Failed to retrieve traffic data")
         return jsonify({
             "status": "error",
-            "message": f"Failed to retrieve traffic data: {str(e)}",
+            "message": "Failed to retrieve traffic data due to an internal error",
             "timestamp": time.time()
         }), 500
 
@@ -96,9 +97,10 @@ def get_anomalies():
         })
         
     except Exception as e:
+        current_app.logger.exception("Failed to detect anomalies")
         return jsonify({
             "status": "error",
-            "message": f"Failed to detect anomalies: {str(e)}",
+            "message": "Failed to detect anomalies due to an internal error",
             "timestamp": time.time()
         }), 500
 
@@ -144,9 +146,10 @@ def get_optimized_route():
         })
         
     except Exception as e:
+        current_app.logger.exception("Failed to calculate route")
         return jsonify({
             "status": "error",
-            "message": f"Failed to calculate route: {str(e)}",
+            "message": "Failed to calculate route due to an internal error",
             "timestamp": time.time()
         }), 500
 
@@ -177,9 +180,10 @@ def get_traffic_stats():
         })
         
     except Exception as e:
+        current_app.logger.exception("Failed to retrieve statistics")
         return jsonify({
             "status": "error",
-            "message": f"Failed to retrieve statistics: {str(e)}",
+            "message": "Failed to retrieve statistics due to an internal error",
             "timestamp": time.time()
         }), 500
 
@@ -205,9 +209,10 @@ def get_available_locations():
         })
         
     except Exception as e:
+        current_app.logger.exception("Failed to retrieve locations")
         return jsonify({
             "status": "error",
-            "message": f"Failed to retrieve locations: {str(e)}",
+            "message": "Failed to retrieve locations due to an internal error",
             "timestamp": time.time()
         }), 500
 
@@ -232,9 +237,10 @@ def get_ml_status():
         })
         
     except Exception as e:
+        current_app.logger.exception("Failed to retrieve ML status")
         return jsonify({
             "status": "error",
-            "message": f"Failed to retrieve ML status: {str(e)}",
+            "message": "Failed to retrieve ML status due to an internal error",
             "timestamp": time.time()
         }), 500
 
@@ -264,8 +270,9 @@ def reset_simulation():
         })
         
     except Exception as e:
+        current_app.logger.exception("Failed to reset simulation")
         return jsonify({
             "status": "error",
-            "message": f"Failed to reset simulation: {str(e)}",
+            "message": "Failed to reset simulation due to an internal error",
             "timestamp": time.time()
         }), 500
