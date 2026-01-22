@@ -9,9 +9,6 @@ import logging
 app = Flask(__name__)
 CORS(app)  # Enable CORS for frontend communication
 
-# Configure basic logging
-logging.basicConfig(level=logging.INFO)
-
 # Initialize the ML system
 traffic_system = TrafficMLSystem()
 
@@ -34,11 +31,11 @@ def get_traffic_data():
         traffic_data = traffic_system.get_current_traffic()
         return jsonify({
             "status": "success",
-        app.logger.exception("Error while getting current traffic data")
             "data": traffic_data,
             "timestamp": time.time()
         })
     except Exception as e:
+        app.logger.exception("Error while getting current traffic data")
         return jsonify({
             "status": "error",
             "message": "An internal error occurred. Please try again later."
@@ -49,13 +46,13 @@ def get_anomalies():
     """Get detected traffic anomalies"""
     try:
         anomalies = traffic_system.detect_anomalies()
-        app.logger.exception("Error while detecting traffic anomalies")
         return jsonify({
             "status": "success",
             "anomalies": anomalies,
             "timestamp": time.time()
         })
     except Exception as e:
+        app.logger.exception("Error while detecting traffic anomalies")
         return jsonify({
             "status": "error",
             "message": "An internal error occurred. Please try again later."
@@ -73,7 +70,6 @@ def get_optimized_route():
                 "status": "error",
                 "message": "Both 'start' and 'end' parameters are required"
             }), 400
-        app.logger.exception("Error while getting optimized route")
         
         route = traffic_system.get_optimized_route(start, end)
         return jsonify({
@@ -82,13 +78,13 @@ def get_optimized_route():
             "timestamp": time.time()
         })
     except Exception as e:
+        app.logger.exception("Error while getting optimized route")
         return jsonify({
             "status": "error",
             "message": "An internal error occurred. Please try again later."
         }), 500
 
 @app.route('/stats', methods=['GET'])
-        app.logger.exception("Error while getting traffic statistics")
 def get_traffic_stats():
     """Get traffic statistics and metrics"""
     try:
@@ -99,6 +95,7 @@ def get_traffic_stats():
             "timestamp": time.time()
         })
     except Exception as e:
+        app.logger.exception("Error while getting traffic statistics")
         return jsonify({
             "status": "error",
             "message": "An internal error occurred. Please try again later."
