@@ -8,6 +8,7 @@ import random
 import time
 from datetime import datetime, timedelta
 import json
+import logging
 
 class TrafficMLSystem:
     def __init__(self):
@@ -326,8 +327,9 @@ class TrafficMLSystem:
                 }
                 
         except Exception as e:
+            logging.exception("Error while calculating optimized route")
             return {
-                'error': f'Route calculation error: {str(e)}',
+                'error': 'Route calculation error. Please try again later.',
                 'available_locations': list(self.graph.nodes())
             }
     
