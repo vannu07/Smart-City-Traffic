@@ -6,6 +6,7 @@ This module defines all API endpoints for the traffic management system.
 
 from flask import Blueprint, jsonify, request, current_app
 import time
+import logging
 
 # Create API blueprint
 api_bp = Blueprint('api', __name__)
@@ -264,8 +265,9 @@ def reset_simulation():
         })
         
     except Exception as e:
+        current_app.logger.exception("Failed to reset simulation")
         return jsonify({
             "status": "error",
-            "message": f"Failed to reset simulation: {str(e)}",
+            "message": "Failed to reset simulation due to an internal error",
             "timestamp": time.time()
         }), 500
