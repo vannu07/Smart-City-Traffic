@@ -34,9 +34,10 @@ def get_traffic_data():
             "timestamp": time.time()
         })
     except Exception as e:
+        app.logger.exception("Error while getting current traffic data")
         return jsonify({
             "status": "error",
-            "message": str(e)
+            "message": "An internal error occurred. Please try again later."
         }), 500
 
 @app.route('/anomalies', methods=['GET'])
@@ -50,9 +51,10 @@ def get_anomalies():
             "timestamp": time.time()
         })
     except Exception as e:
+        app.logger.exception("Error while detecting traffic anomalies")
         return jsonify({
             "status": "error",
-            "message": str(e)
+            "message": "An internal error occurred. Please try again later."
         }), 500
 
 @app.route('/route', methods=['GET'])
@@ -75,9 +77,10 @@ def get_optimized_route():
             "timestamp": time.time()
         })
     except Exception as e:
+        app.logger.exception("Error while getting optimized route")
         return jsonify({
             "status": "error",
-            "message": str(e)
+            "message": "An internal error occurred. Please try again later."
         }), 500
 
 @app.route('/stats', methods=['GET'])
@@ -91,9 +94,10 @@ def get_traffic_stats():
             "timestamp": time.time()
         })
     except Exception as e:
+        app.logger.exception("Error while getting traffic statistics")
         return jsonify({
             "status": "error",
-            "message": str(e)
+            "message": "An internal error occurred. Please try again later."
         }), 500
 
 def update_traffic_data():
