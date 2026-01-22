@@ -4,7 +4,6 @@ import json
 import threading
 import time
 from traffic_ml import TrafficMLSystem
-import logging
 
 app = Flask(__name__)
 CORS(app)  # Enable CORS for frontend communication
