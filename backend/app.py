@@ -116,4 +116,4 @@ if __name__ == '__main__':
     print("🌐 API Server: http://localhost:5000")
     print("📡 Real-time traffic simulation active")
     
-    app.run(debug=True, host='0.0.0.0', port=5000, threaded=True)
+    app.run(host='0.0.0.0', port=5000, threaded=True)
