@@ -6,7 +6,6 @@ This module defines all API endpoints for the traffic management system.
 
 from flask import Blueprint, jsonify, request, current_app
 import time
-import logging
 
 # Create API blueprint
 api_bp = Blueprint('api', __name__)
