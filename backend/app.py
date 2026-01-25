@@ -1,9 +1,15 @@
-from flask import Flask, jsonify, request
-from flask_cors import CORS
-import json
+"""
+Smart City Traffic Management System - Backend API
+
+This module provides the main backend API server for the traffic management system.
+"""
+
 import threading
 import time
 from traffic_ml import TrafficMLSystem
+
+from flask import Flask, jsonify, request
+from flask_cors import CORS
 
 app = Flask(__name__)
 CORS(app)  # Enable CORS for frontend communication
@@ -13,6 +19,7 @@ traffic_system = TrafficMLSystem()
 
 @app.route('/')
 def home():
+    """Home endpoint"""
     return jsonify({
         "message": "Smart City Traffic Management API",
         "endpoints": {
@@ -33,7 +40,7 @@ def get_traffic_data():
             "data": traffic_data,
             "timestamp": time.time()
         })
-    except Exception as e:
+    except Exception:
         app.logger.exception("Error while getting current traffic data")
         return jsonify({
             "status": "error",
@@ -50,7 +57,7 @@ def get_anomalies():
             "anomalies": anomalies,
             "timestamp": time.time()
         })
-    except Exception as e:
+    except Exception:
         app.logger.exception("Error while detecting traffic anomalies")
         return jsonify({
             "status": "error",
@@ -63,20 +70,20 @@ def get_optimized_route():
     try:
         start = request.args.get('start')
         end = request.args.get('end')
-        
+
         if not start or not end:
             return jsonify({
                 "status": "error",
                 "message": "Both 'start' and 'end' parameters are required"
             }), 400
-        
+
         route = traffic_system.get_optimized_route(start, end)
         return jsonify({
             "status": "success",
             "route": route,
             "timestamp": time.time()
         })
-    except Exception as e:
+    except Exception:
         app.logger.exception("Error while getting optimized route")
         return jsonify({
             "status": "error",
@@ -93,7 +100,7 @@ def get_traffic_stats():
             "stats": stats,
             "timestamp": time.time()
         })
-    except Exception as e:
+    except Exception:
         app.logger.exception("Error while getting traffic statistics")
         return jsonify({
             "status": "error",
@@ -106,18 +113,18 @@ def update_traffic_data():
         try:
             traffic_system.update_traffic_simulation()
             time.sleep(5)  # Update every 5 seconds
-        except Exception as e:
-            print(f"Error updating traffic data: {e}")
+        except Exception:
+            print("Error updating traffic data")
             time.sleep(10)
 
 if __name__ == '__main__':
     # Start background traffic simulation
     traffic_thread = threading.Thread(target=update_traffic_data, daemon=True)
     traffic_thread.start()
-    
+
     print("🚦 Smart City Traffic Management System Starting...")
     print("📊 ML Models: Clustering, Anomaly Detection, Route Optimization")
     print("🌐 API Server: http://localhost:5000")
     print("📡 Real-time traffic simulation active")
-    
+
     app.run(host='0.0.0.0', port=5000, threaded=True)

@@ -7,7 +7,6 @@ This is the main application entry point that initializes and runs the
 Smart City Traffic Management System with ML-powered traffic analysis.
 """
 
-import os
 import sys
 from pathlib import Path
 
@@ -23,19 +22,19 @@ def main():
     """Main application entry point"""
     print("🚦 Smart City Traffic Management System")
     print("=" * 50)
-    
+
     # Load configuration
     config = Config()
-    
+
     print(f"📊 Environment: {config.ENVIRONMENT}")
     print(f"🌐 Server Host: {config.HOST}")
     print(f"🔌 Server Port: {config.PORT}")
     print(f"🔄 Debug Mode: {config.DEBUG}")
     print(f"📡 Auto-refresh: {config.AUTO_REFRESH_INTERVAL}s")
-    
+
     # Create Flask application
     app = create_app(config)
-    
+
     print("\n🚀 Starting server...")
     print(f"📍 API Base URL: http://{config.HOST}:{config.PORT}")
     print(f"🌍 Frontend URL: http://{config.HOST}:{config.PORT}/dashboard")
@@ -46,17 +45,17 @@ def main():
     print(f"   • GET  /api/stats       - Get traffic statistics")
     print(f"   • GET  /dashboard       - Web dashboard")
     print(f"   • GET  /health          - Health check")
-    
+
     print("\n⚡ ML Models Active:")
     print("   • KMeans Clustering (Traffic Classification)")
     print("   • Isolation Forest (Anomaly Detection)")
     print("   • NetworkX (Route Optimization)")
-    
+
     print("\n" + "=" * 50)
     print("🎯 Ready! Open your browser and navigate to the dashboard")
     print("⏹️  Press Ctrl+C to stop the server")
     print("=" * 50 + "\n")
-    
+
     try:
         # Run the application
         app.run(
