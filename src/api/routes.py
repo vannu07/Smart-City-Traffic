@@ -4,8 +4,9 @@ Smart City Traffic Management System - API Routes
 This module defines all API endpoints for the traffic management system.
 """
 
-from flask import Blueprint, jsonify, request, current_app
 import time
+
+from flask import Blueprint, jsonify, request, current_app
 
 # Create API blueprint
 api_bp = Blueprint('api', __name__)
@@ -39,7 +40,7 @@ def api_info():
 def get_traffic_data():
     """
     Get current traffic data with ML-based congestion classification
-    
+
     Returns:
         JSON response with traffic data for all road segments including:
         - Vehicle counts
@@ -50,7 +51,7 @@ def get_traffic_data():
     """
     try:
         traffic_data = current_app.ml_system.get_current_traffic()
-        
+
         return jsonify({
             "status": "success",
             "data": traffic_data,
@@ -61,8 +62,8 @@ def get_traffic_data():
                 "update_interval": current_app.config.get('AUTO_REFRESH_INTERVAL', 5)
             }
         })
-        
-    except Exception as e:
+
+    except Exception:
         current_app.logger.exception("Failed to retrieve traffic data")
         return jsonify({
             "status": "error",
@@ -74,7 +75,7 @@ def get_traffic_data():
 def get_anomalies():
     """
     Get detected traffic anomalies using ML anomaly detection
-    
+
     Returns:
         JSON response with detected anomalies including:
         - Anomaly scores
@@ -84,7 +85,7 @@ def get_anomalies():
     """
     try:
         anomalies = current_app.ml_system.detect_anomalies()
-        
+
         return jsonify({
             "status": "success",
             "anomalies": anomalies,
@@ -95,8 +96,8 @@ def get_anomalies():
                 "severity_levels": ["Low", "Medium", "High"]
             }
         })
-        
-    except Exception as e:
+
+    except Exception:
         current_app.logger.exception("Failed to detect anomalies")
         return jsonify({
             "status": "error",
@@ -108,11 +109,11 @@ def get_anomalies():
 def get_optimized_route():
     """
     Get optimized route between two points considering real-time traffic
-    
+
     Query Parameters:
         start (str): Starting location identifier
         end (str): Ending location identifier
-    
+
     Returns:
         JSON response with optimized route including:
         - Path coordinates
@@ -123,7 +124,7 @@ def get_optimized_route():
     try:
         start = request.args.get('start')
         end = request.args.get('end')
-        
+
         if not start or not end:
             return jsonify({
                 "status": "error",
@@ -131,9 +132,9 @@ def get_optimized_route():
                 "example": "/api/route?start=A&end=B",
                 "available_locations": current_app.ml_system.get_available_locations()
             }), 400
-        
+
         route = current_app.ml_system.get_optimized_route(start, end)
-        
+
         return jsonify({
             "status": "success",
             "route": route,
@@ -144,8 +145,8 @@ def get_optimized_route():
                 "end_location": end
             }
         })
-        
-    except Exception as e:
+
+    except Exception:
         current_app.logger.exception("Failed to calculate route")
         return jsonify({
             "status": "error",
@@ -157,7 +158,7 @@ def get_optimized_route():
 def get_traffic_stats():
     """
     Get comprehensive traffic statistics and analytics
-    
+
     Returns:
         JSON response with:
         - Current traffic metrics
@@ -168,7 +169,7 @@ def get_traffic_stats():
     """
     try:
         stats = current_app.ml_system.get_traffic_stats()
-        
+
         return jsonify({
             "status": "success",
             "stats": stats,
@@ -178,8 +179,8 @@ def get_traffic_stats():
                 "ml_insights": "Clustering and anomaly detection applied"
             }
         })
-        
-    except Exception as e:
+
+    except Exception:
         current_app.logger.exception("Failed to retrieve statistics")
         return jsonify({
             "status": "error",
@@ -191,13 +192,13 @@ def get_traffic_stats():
 def get_available_locations():
     """
     Get list of available locations for route planning
-    
+
     Returns:
         JSON response with available start/end points for routing
     """
     try:
         locations = current_app.ml_system.get_available_locations()
-        
+
         return jsonify({
             "status": "success",
             "locations": locations,
@@ -207,8 +208,8 @@ def get_available_locations():
                 "usage": "Use these identifiers in /route endpoint"
             }
         })
-        
-    except Exception as e:
+
+    except Exception:
         current_app.logger.exception("Failed to retrieve locations")
         return jsonify({
             "status": "error",
@@ -220,13 +221,13 @@ def get_available_locations():
 def get_ml_status():
     """
     Get status of ML models and their performance metrics
-    
+
     Returns:
         JSON response with ML model status and metrics
     """
     try:
         ml_status = current_app.ml_system.get_ml_status()
-        
+
         return jsonify({
             "status": "success",
             "ml_status": ml_status,
@@ -235,8 +236,8 @@ def get_ml_status():
                 "models_active": True
             }
         })
-        
-    except Exception as e:
+
+    except Exception:
         current_app.logger.exception("Failed to retrieve ML status")
         return jsonify({
             "status": "error",
@@ -250,7 +251,7 @@ def get_ml_status():
 def reset_simulation():
     """
     Reset traffic simulation (development/testing only)
-    
+
     Returns:
         JSON response confirming reset
     """
@@ -259,17 +260,17 @@ def reset_simulation():
             "status": "error",
             "message": "Reset endpoint only available in debug mode"
         }), 403
-    
+
     try:
         current_app.ml_system.reset_simulation()
-        
+
         return jsonify({
             "status": "success",
             "message": "Traffic simulation reset successfully",
             "timestamp": time.time()
         })
-        
-    except Exception as e:
+
+    except Exception:
         current_app.logger.exception("Failed to reset simulation")
         return jsonify({
             "status": "error",
