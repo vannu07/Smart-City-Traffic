@@ -191,12 +191,12 @@ def validate_api_key(api_key: str, valid_keys: List[str]) -> bool:
     """Validate API key"""
     return api_key in valid_keys if api_key and valid_keys else True
 
-def rate_limit_check(client_id: str, limit: int = 100,
+def rate_limit_check(_client_id: str, limit: int = 100,
                     window: int = 3600) -> Dict[str, Any]:
     """Simple rate limiting check"""
     # This is a simplified implementation
     # In production, you'd use Redis or similar
-    # Note: client_id parameter is for future extension
+    # Note: _client_id parameter is reserved for future implementation
 
     current_time = time.time()
 
