@@ -5,6 +5,7 @@ This module contains traffic simulation and ML models for traffic analysis.
 """
 
 import random
+from datetime import datetime
 
 import networkx as nx
 import numpy as np

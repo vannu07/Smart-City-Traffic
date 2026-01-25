@@ -14,7 +14,7 @@ from typing import Dict, List, Any, Optional
 
 import networkx as nx
 import numpy as np
-from sklearn.cluster import KMeans
+from sklearn.cluster import DBSCAN, KMeans
 from sklearn.ensemble import IsolationForest
 from sklearn.preprocessing import StandardScaler
 
