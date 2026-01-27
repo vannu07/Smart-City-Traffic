@@ -41,7 +41,7 @@ jobs:
       - name: Check Out Source Code
         uses: actions/checkout@v4
 
-      # Perform SAST and/or SCA scan via Fortify on Demand/Fortify Hosted/ScanCentral SAST/Debricked. Based on
+      # Perform SAST and/or SCA scan via Fortify on Demand. Based on
       # configuration, the Fortify GitHub Action can optionally set up the application version/release, generate
       # job summaries and Pull Request comments, and/or export SAST results to the GitHub code scanning dashboard.
       # The Fortify GitHub Action provides many customization capabilities, but in case further customization is
@@ -59,11 +59,10 @@ jobs:
         with:
           sast-scan: true          # Run a SAST scan; if not specified or set to false, no SAST scan will be run
           debricked-sca-scan: true # For FoD, run an open-source scan as part of the SAST scan (ignored if SAST scan
-                                   # is disabled). For SSC, run a Debricked scan and import results into SSC.
+                                   # is disabled).
         env:
           #############################################################
           ##### Fortify on Demand configuration
-          ##### Remove this section if you're integrating with Fortify Hosted/Software Security Center (see below)
           ### Required configuration
           FOD_URL: https://ams.fortify.com                 # Must be hardcoded or configured through GitHub variable, not secret
           FOD_TENANT: ${{secrets.FOD_TENANT}}              # Either tenant/user/password or client id/secret are required;
