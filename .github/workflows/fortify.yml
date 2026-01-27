@@ -94,16 +94,3 @@ jobs:
           # EXPORT_ACTION: <URL or file>                   # Customize export action
           # EXPORT_EXTRA_OPTS: --on-unsigned=ignore        # Pass extra options to export action
           # TOOL_DEFINITIONS: <URL>                        # URL from where to retrieve Fortify tool definitions
-
-          #############################################################
-          ##### Fortify Hosted / Software Security Center & ScanCentral
-          ##### Remove this section if you're integrating with Fortify on Demand (see above)
-          ### Required configuration
-          SSC_URL: ${{vars.SSC_URL}}                       # Must be hardcoded or configured through GitHub variable, not secret
-          SSC_TOKEN: ${{secrets.SSC_TOKEN}}                # SSC CIToken; credentials should be configured through GitHub secrets
-          SC_SAST_TOKEN: ${{secrets.SC_CLIENT_AUTH_TOKEN}} # ScanCentral SAST client_auth_token, required if SAST scan is enabled
-          DEBRICKED_TOKEN: ${{secrets.DEBRICKED_TOKEN}}    # Debricked token, required if Debricked scan is enabled
-          SC_SAST_SENSOR_VERSION: 24.4.0                   # Sensor version to use for the scan, required if SAST scan is enabled
-          ### Optional configuration
-          # SSC_LOGIN_EXTRA_OPTS: --socket-timeout=60s     # Extra 'fcli ssc session login' options
-          # SC_SAST_LOGIN_EXTRA_OPTS: --socket-timeout=60s # Extra 'fcli sc-sast session login' options
