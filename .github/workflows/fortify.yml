@@ -64,18 +64,22 @@ jobs:
           #############################################################
           ##### Fortify on Demand configuration
           ### Required configuration
+          # IMPORTANT: You must configure one of these authentication methods in GitHub repository secrets:
+          # Option 1: User authentication - Set FOD_TENANT, FOD_USER, and FOD_PASSWORD secrets
+          # Option 2: Client authentication - Set FOD_TENANT, FOD_CLIENT_ID, and FOD_CLIENT_SECRET secrets
+          # The workflow will fail if neither FOD_USER nor FOD_CLIENT_ID is set.
           FOD_URL: https://ams.fortify.com                 # Must be hardcoded or configured through GitHub variable, not secret
-          FOD_TENANT: ${{secrets.FOD_TENANT}}              # Either tenant/user/password or client id/secret are required;
-          FOD_USER: ${{secrets.FOD_USER}}                  # these should be configured through GitHub secrets.
-          FOD_PASSWORD: ${{secrets.FOD_PASSWORD}}
-          # FOD_CLIENT_ID: ${{secrets.FOD_CLIENT_ID}}
-          # FOD_CLIENT_SECRET: ${{secrets.FOD_CLIENT_SECRET}}
+          FOD_TENANT: ${{secrets.FOD_TENANT}}              # Required for both authentication methods
+          FOD_USER: ${{secrets.FOD_USER}}                  # Required for user authentication
+          FOD_PASSWORD: ${{secrets.FOD_PASSWORD}}          # Required for user authentication
+          # FOD_CLIENT_ID: ${{secrets.FOD_CLIENT_ID}}      # Required for client authentication (uncomment if using)
+          # FOD_CLIENT_SECRET: ${{secrets.FOD_CLIENT_SECRET}} # Required for client authentication (uncomment if using)
           ### Optional configuration
           # FOD_LOGIN_EXTRA_OPTS: --socket-timeout=60s     # Extra 'fcli fod session login' options
           # FOD_RELEASE: MyApp:MyRelease                   # FoD release name, default: <org>/<repo>:<branch>
           # DO_SETUP: true                                 # Setup FoD application, release & static scan configuration
           # SETUP_ACTION: <URL or file>                    # Customize setup action
-                                                           # Pass extra options to setup action:
+          # Pass extra options to setup action:
           # SETUP_EXTRA_OPTS: --copy-from "${{ github.repository }}:${{ github.event.repository.default_branch }}"
           # PACKAGE_EXTRA_OPTS: -oss -bt mvn               # Extra 'scancentral package' options
           # FOD_SAST_SCAN_EXTRA_OPTS:                      # Extra 'fcli fod sast-scan start' options
